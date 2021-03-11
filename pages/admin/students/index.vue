@@ -10,14 +10,7 @@
     <div v-else>
       <div v-if="students.length > 0">
         <v-row>
-          <v-col
-            v-for="(user, i) in students"
-            :key="i"
-            cols="12"
-            sm="6"
-            md="4"
-            lg="3"
-          >
+          <v-col v-for="(user, i) in students" :key="i" cols="12" sm="6" md="4">
             <UsersDataCard :user="user.profile" />
           </v-col>
         </v-row>

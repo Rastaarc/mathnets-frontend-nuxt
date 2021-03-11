@@ -25,23 +25,23 @@
           >
             <v-text-field
               v-model="courseData.title"
-              label="Course Title"
+              label="Class Title"
               :rules="rules.newCourseTitle"
             ></v-text-field>
             <v-textarea
               v-model="courseData.description"
-              label="Course Description"
+              label="Class Description"
               :rules="rules.newCourseDescription"
             ></v-textarea>
             <v-text-field
               v-model="courseData.thumbnail_link"
-              label="Course Thumbnail"
+              label="Class Thumbnail"
               :rules="rules.thumbnailLink"
               counter="250"
             ></v-text-field>
             <v-select
               v-model="courseData.subscription"
-              label="Course Subscription Level"
+              label="Class Subscription Level"
               :items="subscriptions"
               item-text="title"
               item-value="id"

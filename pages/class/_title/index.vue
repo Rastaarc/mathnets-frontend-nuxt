@@ -15,9 +15,9 @@
               tile
               plain
               color="primary"
-              :to="{ name: 'courses' }"
+              :to="{ name: 'classes' }"
               class="text-capitalize"
-              >Courses</v-btn
+              >Classes</v-btn
             ></v-breadcrumbs-item
           >
           /
@@ -48,6 +48,7 @@
                 </v-img>
               </v-col>
               <v-col cols="12" sm="7">
+                <!-- TODO: ADD RATING -->
                 <!-- Mobile -->
                 <div v-if="$vuetify.breakpoint.xsOnly">
                   <v-expansion-panels flat>
@@ -100,7 +101,7 @@
         >
           <div v-if="parseInt(courseData.subscription.price) > 0">
             <div v-if="!$auth.loggedIn" class="font-weight-bold error--text">
-              PLEASE SIGNUP/LOGIN FIRST IN ORDER TO ADD THIS COURSE
+              {{ messages.CLASS_LOGIN_REQUIRED }}
             </div>
             <div v-else>
               <div v-if="studentCanApply && !studentCanViewCourse">
@@ -109,7 +110,7 @@
                   :loading="addCourseLoading"
                   :disabled="disabledAddCourse"
                   @click="addCourse"
-                  >Add Course
+                  >Add Class
                 </v-btn>
               </div>
               <div v-else-if="!adminAndInstructor">
@@ -128,8 +129,10 @@
         </v-row>
         <v-row justify="center" class="mt-5">
           <v-col cols="12" md="8">
-            <div class="text-title text-md-h5 font-weight-bold text-uppercase">
-              Course Topics
+            <div
+              class="primary--text text-center text-title text-md-h5 font-weight-bold text-uppercase"
+            >
+              Class Topics
             </div>
             <div>
               <div v-if="topicsLoading">
@@ -155,7 +158,7 @@
                             plain
                             color="primary"
                             :to="{
-                              name: 'course-title-topic-slug',
+                              name: 'class-title-topic-slug',
                               params: {
                                 slug: topic.seo_link,
                                 title: topic.course.seo_link,
@@ -168,12 +171,28 @@
                       </v-expansion-panel-content>
                     </v-expansion-panel>
                   </v-expansion-panels>
+                  <div class="mt-4 text-center">
+                    <div
+                      class="mt-7 mb-5 font-weight-bold primary--text text-uppercase"
+                    >
+                      Help us to Rate this Class in order to improve our
+                      teaching methods
+                    </div>
+                    <span class="text-h6">({{ yesThumbCount }})</span
+                    ><v-icon color="yesThumbColor" large @click="rateClass(1)"
+                      >mdi-thumb-up</v-icon
+                    >
+                    <span class="text-h6">({{ noThumbCount }})</span
+                    ><v-icon color="noThumbColor" large @click="rateClass(0)"
+                      >mdi-thumb-down</v-icon
+                    >
+                  </div>
                 </div>
                 <div
                   v-else
                   class="mt-4 font-weight-bold text-md-h5 text-title text-uppercase text-center"
                 >
-                  No Topics for this course yet. Check back later
+                  {{ messages.NO_TOPIC_FOR_CLASS }}
                 </div>
               </div>
             </div>
@@ -182,7 +201,7 @@
             <div
               class="text-title text-md-h5 font-weight-bold text-center text-uppercase"
             >
-              Other Courses
+              Other Classes
             </div>
             <div v-if="otherCoursesLoading" class="text-center">
               <v-progress-circular indeterminate color="primary" />
@@ -197,7 +216,7 @@
                 v-else
                 class="mt-4 font-weight-bold text-md-h5 text-title text-uppercase text-center"
               >
-                No other courses yet. Check back later
+                {{ messages.NO_OTHER_CLASS_YET }}
               </div>
             </div>
           </v-col>
@@ -242,7 +261,7 @@ export default {
     )
     if (data.message) {
       this.$store.dispatch('snackalert/showErrorSnackbar', data.message)
-      this.$router.push({ name: 'courses' })
+      this.$router.push({ name: 'classes' })
     }
     this.courseData = data.course
     await this.loadTopics(this.courseData.id)
@@ -269,6 +288,10 @@ export default {
   },
   data() {
     return {
+      noThumbColor: 'secondary',
+      noThumbCount: 0,
+      yesThumbCount: 0,
+      yesThumbColor: 'secondary',
       openFullDescription: false,
       fullDescription: '',
       courseData: {},
@@ -325,6 +348,18 @@ export default {
     },
   },
   methods: {
+    rateClass(type_) {
+      // eslint-disable-next-line no-console
+      console.log(type_)
+      switch (type_) {
+        case 1:
+          this.yesThumbCount += 1
+          break
+        case 0:
+          this.noThumbCount += 1
+          break
+      }
+    },
     async addCourse() {
       this.addCourseLoading = true
       try {

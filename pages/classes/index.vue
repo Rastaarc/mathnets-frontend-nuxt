@@ -12,9 +12,9 @@
             <div
               class="text-subtitle-2 text-md-h6 text-center text-sm-left mt-4"
             >
-              Browse through our available courses to brighten your horizon and
+              Browse through our available classes to brighten your horizon and
               excel in <span class="primary--text">Mathematics</span> or use the
-              search box to find a specific course
+              search box to find a specific class
             </div>
           </v-col>
           <v-col
@@ -85,7 +85,6 @@
               cols="12"
               sm="6"
               md="4"
-              lg="3"
             >
               <CourseDataCardGeneral :course="course" />
             </v-col>
@@ -97,8 +96,8 @@
             />
           </div>
         </div>
-        <div v-else class="text-center font-weight-bold text-h4">
-          No Course Data To Display Right Now
+        <div v-else class="mt-10 mb-8 text-center font-weight-bold text-h4">
+          {{ messages.NO_COURSE_DATA }}
         </div>
       </div>
     </div>
@@ -138,11 +137,12 @@ export default {
   },
   data() {
     return {
+      messages: CONSTANTS.MESSAGES,
       valid: false,
       courses: [],
       pagination: {},
       pageToGo: null,
-      searchItem: '',
+      searchItem: this.$route.query.s ? this.$route.query.s : '',
       displayImg: '/images/courses_page_hero_img.png',
       searchRules: formRules.fieldRequired,
     }
@@ -177,7 +177,7 @@ export default {
     },
   },
   head: {
-    title: 'Courses',
+    title: 'Classes',
   },
 }
 </script>

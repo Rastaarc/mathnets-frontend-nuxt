@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TheHeadInfo text="My Courses" :show-add="false" />
+    <TheHeadInfo text="My Classes" :show-add="false" />
     <div v-if="$fetchState.pending">
       <CircularLoader />
     </div>
@@ -78,7 +78,7 @@ export default {
     },
   },
   head: {
-    title: 'Student Courses',
+    title: 'Student Classes',
   },
 }
 </script>

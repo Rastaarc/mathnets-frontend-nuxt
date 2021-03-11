@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TheHeadInfo text="Courses" @openAddNewDialog="openCourseDialog" />
+    <TheHeadInfo text="Classes" @openAddNewDialog="openCourseDialog" />
     <div v-if="$fetchState.pending">
       <CircularLoader />
     </div>
@@ -185,7 +185,7 @@ export default {
     },
   },
   head: {
-    title: "Courses' List",
+    title: 'Classes List',
   },
 }
 </script>

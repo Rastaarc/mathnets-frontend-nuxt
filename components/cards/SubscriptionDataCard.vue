@@ -12,10 +12,12 @@
       <v-card-subtitle> &#8358;{{ item.price }}</v-card-subtitle>
       <v-card-text>
         <div
-          :style="{ height: '70px' }"
+          class="truncate-t"
+          :style="{ height: '20px' }"
           @click="showFullDescription(item.description)"
         >
-          <TextTruncate>{{ item.description }}</TextTruncate>
+          {{ item.description }}
+          <!--<TextTruncate>{{ item.description }}</TextTruncate>-->
         </div>
       </v-card-text>
       <v-divider></v-divider>
@@ -92,4 +94,10 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style>
+.truncate-t {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+</style>

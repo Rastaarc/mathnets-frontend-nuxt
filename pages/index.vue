@@ -30,7 +30,7 @@
     <v-row class="mt-5 mx-5">
       <v-col cols="12">
         <div class="mx-4 d-flex">
-          <span class="text-uppercase font-weight-bold">Courses</span>
+          <span class="text-uppercase font-weight-bold">CLASSES</span>
           <span class="ml-auto">
             <v-btn icon
               ><v-icon color="primary">mdi-chevron-left</v-icon></v-btn
@@ -65,14 +65,18 @@
             cols="12"
             sm="6"
             md="4"
-            lg="3"
           >
             <CourseDataCardGeneral :course="course" />
           </v-col>
         </v-row>
+        <div class="mt-12 mb-9 text-center">
+          <v-btn color="primary" outlined :to="{ name: 'classes' }"
+            >See More</v-btn
+          >
+        </div>
       </div>
       <div v-else class="text-center font-weight-bold text-h4">
-        No Course Data To Display Right Now
+        {{ messages.NO_COURSE_DATA }}
       </div>
     </div>
   </div>
@@ -102,20 +106,23 @@ export default {
   },
   data() {
     return {
+      messages: CONSTANTS.MESSAGES,
       displayImage: '/images/hero_image.png',
       courses: [],
       pagination: {},
     }
   },
-  head: {
-    title: `Home`,
-    meta: [
-      {
-        hid: 'description',
-        name: 'description',
-        content: `${CONSTANTS.APP_NAME} Homepage, Online maths schools`,
-      },
-    ],
+  head() {
+    return {
+      title: `Home`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `${CONSTANTS.APP_NAME} Homepage, Online maths schools`,
+        },
+      ],
+    }
   },
 }
 </script>

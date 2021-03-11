@@ -26,13 +26,14 @@
       </v-card-text>
       <v-divider />
       <v-card-actions>
+        <!-- TODO: ADD RATING -->
         <v-spacer />
         <v-btn
           color="primary"
           text
           small
-          :to="{ name: 'course-title', params: { title: course.seo_link } }"
-          >Open Course</v-btn
+          :to="{ name: 'class-title', params: { title: course.seo_link } }"
+          >Open Class</v-btn
         >
         <v-spacer />
       </v-card-actions>

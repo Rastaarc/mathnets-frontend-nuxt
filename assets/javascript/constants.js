@@ -9,10 +9,10 @@ export const CONSTANTS = {
   ROUTES: {
     BASE_URL: 'http://localhost:5000/api/v1/',
     ADMIN: {
-      ADD_COURSE: 'admin/add/course',
-      UPDATE_COURSE: 'admin/update/course',
-      DELETE_COURSE: 'admin/delete/course',
-      GET_COURSES: 'admin/get/courses',
+      ADD_COURSE: 'admin/add/class',
+      UPDATE_COURSE: 'admin/update/class',
+      DELETE_COURSE: 'admin/delete/class',
+      GET_COURSES: 'admin/get/classes',
       ADD_SUBSCRIPTION: 'admin/add/subscription',
       UPDATE_SUBSCRIPTION: 'admin/update/subscription',
       DELETE_SUBSCRIPTION: 'admin/delete/subscription',
@@ -27,13 +27,13 @@ export const CONSTANTS = {
     STUDENT: {
       ADD_PAYMENT: '/student/add/payment',
       UPDATE_PAYMENT: '/student/update/payment',
-      ADD_COURSE: '/student/add/course',
+      ADD_COURSE: '/student/add/class',
       ADD_SUBSCRIPTION: '/student/add/subscription',
       LOAD_PAYMENTS: '/student/load/payments',
-      LOAD_COURSES: '/student/load/courses',
+      LOAD_COURSES: '/student/load/classes',
       LOAD_SUBSCRIPTIONS: '/student/load/subscriptions',
       CHECK_SUBSCRIPTION_STATUS: '/student/check/subscription/status',
-      CHECK_COURSE_STATUS: '/student/check/course/status',
+      CHECK_COURSE_STATUS: '/student/check/class/status',
     },
     INSTRUCTOR: {
       GET_TOPICS: 'instructor/get/topics',
@@ -42,10 +42,10 @@ export const CONSTANTS = {
       DELETE_TOPIC: 'instructor/delete/topic',
     },
     GENERAL: {
-      GET_COURSES: 'get/courses',
-      GET_COURSE_DATA: 'get/course/data',
+      GET_COURSES: 'get/classes',
+      GET_COURSE_DATA: 'get/class/data',
       GET_TOPIC_DATA: 'get/topic/data',
-      GET_RANDOM_COURSES: 'get/random/courses',
+      GET_RANDOM_COURSES: 'get/random/classes',
       UPDATE_PROFILE: 'update/profile',
       GET_SUBSCRIPTIONS_DATA: 'get/subscriptions/data',
       UPDATE_DP_LINK: 'update/dp/link',
@@ -72,16 +72,16 @@ export const CONSTANTS = {
     INVALID_USERNAME: 'Invalid Username supplied. Please choose another one',
     LOGIN_SUC: 'Account Logged-in successfully',
     LOGIN_ERR: 'Sorry, Your username/email or password is incorrect',
-    NO_USER: "Sorry, We can't find the user with the detail(s) supplied",
+    NO_USER: "Sorry, We can't find the User with the detail(s) supplied",
     USER_EXIST:
       'Sorry! This Username has been registered. Choose another one for your account',
     EMAIL_EXIST:
       'Sorry! This Email has been registered. Choose another one for your account',
     FORM_ERROR: 'Please fill the form properly',
     LOGIN_REQUIRED: 'Please login first before you can access that page',
-    ADMIN_REQUIRED: 'Sorry! only super users can access that page',
-    INSTRUCTOR_REQUIRED: 'Sorry! only students can access that page',
-    STUDENT_REQUIRED: 'Sorry! only students can access that page',
+    ADMIN_REQUIRED: 'Sorry! only Admin can access that page',
+    INSTRUCTOR_REQUIRED: 'Sorry! only Instructors can access that page',
+    STUDENT_REQUIRED: 'Sorry! only Students can access that page',
     ALREADY_LOGIN:
       'Please Logout first before you can have access to that page',
     FETCH_LOADING_ERROR:
@@ -90,12 +90,17 @@ export const CONSTANTS = {
     FETCH_LOADING_DATA: 'Loading Data.........',
     NO_DATA_TO_DISPLAY: 'SORRY! NO DATA AVAILABLE TO DISPLAY',
     NO_TOPICS_TO_DISPLAY: 'No Topics Data To Display Right Now',
-    COURSE_NOT_FOUND: "Oops! We can't find the course you're looking for",
-    TOPIC_NOT_FOUND: "Oops! We can't find the topic you're looking for",
+    COURSE_NOT_FOUND: "Oops! We can't find the Class you're looking for",
+    TOPIC_NOT_FOUND: "Oops! We can't find the Topic you're looking for",
     NO_ACCESS_TO_TOPIC:
-      "Oops! You don't have access to view that course contents",
+      "Oops! You don't have access to view that Class contents",
     GENERAL_ERROR_MESSAGE:
       'Oops! Something went wrong with your request. please try again',
-    ADD_COURSE_FIRST: 'Please add the course to your courses list first',
+    ADD_COURSE_FIRST: 'Please add the Class to your Classes list first',
+    NO_OTHER_CLASS_YET: 'No other courses yet. Check back later',
+    NO_TOPIC_FOR_CLASS: 'No Topics for this course yet. Check back later',
+    CLASS_LOGIN_REQUIRED:
+      'PLEASE SIGNUP/LOGIN FIRST IN ORDER TO ADD THIS CLASS',
+    NO_COURSE_DATA: 'No Class Data To Display Right Now',
   },
 }

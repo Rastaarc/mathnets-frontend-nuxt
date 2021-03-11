@@ -98,8 +98,8 @@ export default {
           icon: 'mdi-view-dashboard-outline',
         }, */
         {
-          title: 'Courses',
-          to: { name: 'student-courses' },
+          title: 'Classes',
+          to: { name: 'student-classes' },
           icon: 'mdi-book-open-outline',
         },
         {
@@ -142,8 +142,8 @@ export default {
           icon: 'mdi-view-dashboard-outline',
         },
         {
-          title: 'Courses',
-          to: { name: 'admin-courses' },
+          title: 'Classes',
+          to: { name: 'admin-classes' },
           icon: 'mdi-book-open-outline',
         },
         /* {

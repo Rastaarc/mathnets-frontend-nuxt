@@ -54,10 +54,10 @@ export default {
     },
     avatarSize() {
       return this.$vuetify.breakpoint.xsOnly
-        ? '150'
+        ? '100'
         : this.$vuetify.breakpoint.smOnly
-        ? '200'
-        : '270'
+        ? '150'
+        : '220'
     },
   },
   methods: {},

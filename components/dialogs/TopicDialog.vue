@@ -36,7 +36,7 @@
             ></v-text-field>
             <v-select
               v-model="topicData.course"
-              label="Topic Course"
+              label="Topic Class"
               :items="courses"
               item-text="title"
               item-value="id"

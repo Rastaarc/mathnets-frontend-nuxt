@@ -8,15 +8,15 @@
       <v-spacer />
     </v-app-bar>
     <v-main>
-      <v-row
+      <!--<v-row
         v-if="$vuetify.breakpoint.mdAndUp"
         align="center"
         justify="center"
         class="mt-7"
       >
-        <v-col cols="12" md="6" offset-md="3">
+        <v-col cols="12" md="7" offset-md="4">
           <v-card
-            width="230"
+            width="250"
             flat
             tile
             style="background-color: transparent !important"
@@ -24,13 +24,13 @@
             <v-img :src="img" />
           </v-card>
         </v-col>
-      </v-row>
+      </v-row>-->
       <v-container>
         <v-row
           justify="center"
           align="center"
           align-content="center"
-          :class="{ 'mt-9': $vuetify.breakpoint.smAndDown }"
+          class="mt-9 mt-md-12"
         >
           <v-col cols="12" sm="6" md="5">
             <v-card elevation="12" rounded>

@@ -26,12 +26,13 @@
       </v-card-text>
       <v-divider></v-divider>
       <v-card-actions>
-        <v-rating
+        <!-- TODO: ADD RATING -->
+        <!--<v-rating
           x-small
-          :length="4"
+          :length="499"
           :value="ratingValue"
           color="amber darken-2"
-        />
+        />-->
         <v-spacer></v-spacer>
         <v-btn
           :x-small="xSmall"
@@ -75,7 +76,7 @@ export default {
       openFullDescription: false,
       fullDescription: '',
       thumb: '/images/hero_image.png',
-      rating: [1, 2, 3],
+      rating: [199, 299, 399],
     }
   },
   computed: {

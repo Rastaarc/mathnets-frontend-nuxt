@@ -29,7 +29,7 @@
               color="primary"
               class="text-capitalize"
               :to="{
-                name: 'course-title',
+                name: 'class-title',
                 params: { title: this.$route.params.title },
               }"
             >
@@ -89,7 +89,7 @@
                               plain
                               color="primary"
                               :to="{
-                                name: 'course-title-topic-slug',
+                                name: 'class-title-topic-slug',
                                 params: {
                                   slug: topic.seo_link,
                                   title: topic.course.seo_link,
@@ -196,7 +196,7 @@ export default {
           CONSTANTS.MESSAGES.ADD_COURSE_FIRST
         )
         await this.$router.push({
-          name: 'course-title',
+          name: 'class-title',
           params: { title: this.$route.params.title },
         })
       }
@@ -215,7 +215,7 @@ export default {
       this.$store.dispatch('snackalert/showErrorSnackbar', res.data.message)
       this.topicAvailable = false
       await this.$router.push({
-        name: 'course-title',
+        name: 'class-title',
         params: { title: this.courseData.seo_link },
       })
     }

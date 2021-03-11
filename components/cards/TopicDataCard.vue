@@ -24,7 +24,7 @@
           color="primary"
           target="_blank"
           :to="{
-            name: 'course-title-topic-slug',
+            name: 'class-title-topic-slug',
             params: { title: topic.course.seo_link, slug: topic.seo_link },
           }"
           >View</v-btn

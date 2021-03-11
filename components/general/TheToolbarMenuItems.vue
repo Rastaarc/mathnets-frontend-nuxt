@@ -90,7 +90,7 @@ export default {
   data() {
     return {
       menuItems: [
-        { name: 'Courses', to: { name: 'courses' } },
+        { name: 'Classes', to: { name: 'classes' } },
         { name: 'Past Questions', to: { name: 'pq' } },
         { name: 'Pricing', to: { name: 'pricing' } },
         { name: 'About', to: { name: 'about' } },
@@ -113,7 +113,7 @@ export default {
         this.$auth.user &&
         this.$auth.user.user_type === CONSTANTS.USER_TYPES.STUDENT
       ) {
-        return { name: 'student-courses' }
+        return { name: 'student-classes' }
       } else {
         return '/'
       }

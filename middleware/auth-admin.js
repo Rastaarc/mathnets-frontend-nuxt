@@ -9,7 +9,7 @@ export default function ({ store, $auth, $axios, redirect }) {
       show: true,
     })
     if ($auth.user.user_type === CONSTANTS.USER_TYPES.STUDENT) {
-      redirect({ name: 'student-courses' })
+      redirect({ name: 'student-classes' })
     } else if ($auth.user.user_type === CONSTANTS.USER_TYPES.INSTRUCTOR) {
       redirect({ name: 'instructor-topics' })
     } else {

@@ -128,7 +128,7 @@ export default {
     overviewItems() {
       return [
         { count: this.counter.topics, text: 'Topics' },
-        { count: this.counter.courses, text: 'Courses' },
+        { count: this.counter.courses, text: 'Classes' },
         { count: this.counter.pq, text: 'Past Questions' },
         { count: this.counter.sub_level, text: 'Subscription Levels' },
         { count: this.counter.students, text: 'Students' },
@@ -146,7 +146,7 @@ export default {
         },
         {
           head: this.mostAddedCourse,
-          text: 'The Most Subscribed Course By Students',
+          text: 'The Most Subscribed Class By Students',
         },
       ]
     },

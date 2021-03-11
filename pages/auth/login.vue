@@ -90,7 +90,7 @@ export default {
             this.$router.push({ name: 'instructor-topics' })
             break
           case CONSTANTS.USER_TYPES.STUDENT:
-            this.$router.push({ name: 'student-courses' })
+            this.$router.push({ name: 'student-classes' })
             break
           case CONSTANTS.USER_TYPES.ADMIN:
             this.$router.push({ name: 'admin-dashboard' })

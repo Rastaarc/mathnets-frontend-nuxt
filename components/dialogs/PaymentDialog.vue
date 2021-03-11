@@ -31,6 +31,7 @@
             small
             color="primary"
             :loading="loading"
+            :disabled="disabled"
             @click="makePayment"
             >MAKE PAYMENT</v-btn
           >

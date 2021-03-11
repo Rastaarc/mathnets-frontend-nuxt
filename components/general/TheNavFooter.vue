@@ -46,7 +46,7 @@ export default {
         { to: { name: 'contact' }, name: 'Contact Us' },
       ],
       interactive: [
-        { to: { name: 'courses' }, name: 'Courses' },
+        { to: { name: 'classes' }, name: 'Classes' },
         { to: { name: 'pq' }, name: 'Past Questions' },
       ],
       company: [
