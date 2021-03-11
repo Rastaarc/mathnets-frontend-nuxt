@@ -15,9 +15,9 @@
               tile
               plain
               color="primary"
-              :to="{ name: 'courses' }"
+              :to="{ name: 'classes' }"
               class="text-capitalize"
-              >Courses</v-btn
+              >Classes</v-btn
             ></v-breadcrumbs-item
           >
           /
