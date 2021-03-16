@@ -28,7 +28,7 @@
           <!-- <TextTruncate>{{ pricing.description }}</TextTruncate> -->
         </div>
         <div class="font-weight-black text-h4 text-md-h2 black--text">
-          &#8358;{{ pricing.price }}
+          &#8358;{{ pricing.dprice }}
         </div>
         <div class="font-weight-bold text-caption text-md-body-2 mb-5">
           for {{ pricing.duration }}

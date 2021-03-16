@@ -159,7 +159,7 @@ import GeneralError from '~/components/errors/GeneralError'
 
 export default {
   layout: 'homepage',
-  middleware: ['authenticate'],
+  // middleware: ['authenticate'],
   components: {
     GeneralError,
     VideoPlayer,
@@ -181,10 +181,12 @@ export default {
     }
     this.courseData = data.course
 
-    if (
+    if (!this.$auth.loggedIn && this.courseData.subscription.price > 0) {
+      this.$router.push({ name: 'auth-login' })
+    } else if (
       this.$auth.loggedIn &&
       this.$auth.user.user_type === CONSTANTS.USER_TYPES.STUDENT &&
-      this.courseData.subscription.pricing >= 1
+      this.courseData.subscription.pricing > 0
     ) {
       const cResp = await this.$axios.post(
         CONSTANTS.ROUTES.STUDENT.CHECK_COURSE_STATUS,

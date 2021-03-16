@@ -128,7 +128,7 @@
           </div>
         </v-row>
         <v-row justify="center" class="mt-5">
-          <v-col cols="12" md="8">
+          <v-col cols="12" md="7">
             <div
               class="primary--text text-center text-title text-md-h5 font-weight-bold text-uppercase"
             >
@@ -171,21 +171,8 @@
                       </v-expansion-panel-content>
                     </v-expansion-panel>
                   </v-expansion-panels>
-                  <div class="mt-4 text-center">
-                    <div
-                      class="mt-7 mb-5 font-weight-bold primary--text text-uppercase"
-                    >
-                      Help us to Rate this Class in order to improve our
-                      teaching methods
-                    </div>
-                    <span class="text-h6">({{ yesThumbCount }})</span
-                    ><v-icon color="yesThumbColor" large @click="rateClass(1)"
-                      >mdi-thumb-up</v-icon
-                    >
-                    <span class="text-h6">({{ noThumbCount }})</span
-                    ><v-icon color="noThumbColor" large @click="rateClass(0)"
-                      >mdi-thumb-down</v-icon
-                    >
+                  <div v-if="canRateTheClass" class="mt-4 text-center">
+                    <TheRatingBox />
                   </div>
                 </div>
                 <div
@@ -197,7 +184,7 @@
               </div>
             </div>
           </v-col>
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="5">
             <div
               class="text-title text-md-h5 font-weight-bold text-center text-uppercase"
             >
@@ -241,10 +228,12 @@ import CircularLoader from '~/components/loaders/CircularLoader'
 import FetchError from '~/components/errors/FetchError'
 import CourseDataCardGeneral from '~/components/cards/CourseDataCardGeneral'
 import FullDescriptionDialog from '~/components/dialogs/FullDescriptionDialog'
+import TheRatingBox from '~/components/general/TheRatingBox'
 
 export default {
   layout: 'homepage',
   components: {
+    TheRatingBox,
     FullDescriptionDialog,
     CourseDataCardGeneral,
     CircularLoader,
@@ -284,10 +273,13 @@ export default {
         { data: { course: this.courseData.id } }
       )
       this.studentCanViewCourse = !courseResp.data.status
+
+      this.canRateTheClass = true
     }
   },
   data() {
     return {
+      rating: 1,
       noThumbColor: 'secondary',
       noThumbCount: 0,
       yesThumbCount: 0,
@@ -304,6 +296,7 @@ export default {
       studentCanViewCourse: false,
       studentCanApply: false,
       disabledAddCourse: false,
+      canRateTheClass: false,
     }
   },
   computed: {
@@ -320,7 +313,7 @@ export default {
       }
     },
     canViewCourse() {
-      if (!this.$auth.loggedIn) {
+      if (!this.$auth.loggedIn && this.courseData.subscription.price > 0) {
         return false
       } else if (
         this.$auth.loggedIn &&
