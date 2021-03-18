@@ -74,7 +74,12 @@
                   class="d-flex mt-n4 mb-5"
                 >
                   {{ formattedDate(comment.created_on) }} |
-                  <v-rating small color="primary" :value="comment.rating" />
+                  <v-rating
+                    readonly
+                    small
+                    color="primary"
+                    :value="comment.rating"
+                  />
                 </div>
                 <div v-else>
                   <div
@@ -84,7 +89,12 @@
                   </div>
                   <div class="mt-n2 mb-5 text-caption">
                     {{ formattedDate(comment.created_on) }}
-                    <v-rating x-small color="primary" :value="comment.rating" />
+                    <v-rating
+                      readonly
+                      x-small
+                      color="primary"
+                      :value="comment.rating"
+                    />
                   </div>
                 </div>
               </div>
