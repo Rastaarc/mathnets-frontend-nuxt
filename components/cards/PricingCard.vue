@@ -21,13 +21,15 @@
           {{ pricing.title }}
         </div>
         <div
-          class="text-caption text-md-h6 text-center truncate-t"
+          :style="{ height: '55px' }"
+          class="text-caption text-md-h6 text-center mb-5"
           @click="showFullDescription(pricing.description)"
         >
-          {{ pricing.description }}
+          <v-clamp autoresize :max-lines="3">{{ pricing.description }}</v-clamp>
+          <!--{{ pricing.description }}-->
           <!-- <TextTruncate>{{ pricing.description }}</TextTruncate> -->
         </div>
-        <div class="font-weight-black text-h4 text-md-h2 black--text">
+        <div class="font-weight-black text-h4 text-md-h2 black--text mt-3">
           &#8358;{{ pricing.dprice }}
         </div>
         <div class="font-weight-bold text-caption text-md-body-2 mb-5">
@@ -62,6 +64,7 @@
 </template>
 
 <script>
+import VClamp from 'vue-clamp'
 import { CONSTANTS } from '~/assets/javascript/constants'
 import FullDescriptionDialog from '~/components/dialogs/FullDescriptionDialog'
 import FetchError from '~/components/errors/FetchError'
@@ -73,6 +76,7 @@ export default {
     FullDescriptionDialog,
     CircularLoader,
     FetchError,
+    VClamp,
   },
   props: {
     pricing: {

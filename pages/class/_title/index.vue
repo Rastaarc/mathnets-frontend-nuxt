@@ -48,7 +48,6 @@
                 </v-img>
               </v-col>
               <v-col cols="12" sm="7">
-                <!-- TODO: ADD RATING -->
                 <!-- Mobile -->
                 <div v-if="$vuetify.breakpoint.xsOnly">
                   <v-expansion-panels flat>
@@ -62,7 +61,7 @@
                         </template>
                       </v-expansion-panel-header>
                       <v-expansion-panel-content>
-                        <div class="text-caption mb-3">
+                        <div class="text-caption mb-5">
                           <v-chip color="primary">{{
                             courseData.subscription.title
                           }}</v-chip>
@@ -87,7 +86,10 @@
                     style="height: 200px"
                     @click="showFullDescription(courseData.description)"
                   >
-                    <TextTruncate>{{ courseData.description }}</TextTruncate>
+                    <v-clamp autoresize :max-lines="12">{{
+                      courseData.description
+                    }}</v-clamp>
+                    <!--<TextTruncate>{{ courseData.description }}</TextTruncate>-->
                   </div>
                 </div>
               </v-col>
@@ -171,8 +173,8 @@
                       </v-expansion-panel-content>
                     </v-expansion-panel>
                   </v-expansion-panels>
-                  <div v-if="canRateTheClass" class="mt-4 text-center">
-                    <TheRatingBox />
+                  <div class="mt-4 text-center">
+                    <TheRatingBox :course="courseData" />
                   </div>
                 </div>
                 <div
@@ -223,6 +225,7 @@
 
 <script>
 import _ from 'lodash'
+import VClamp from 'vue-clamp'
 import { CONSTANTS } from '~/assets/javascript/constants'
 import CircularLoader from '~/components/loaders/CircularLoader'
 import FetchError from '~/components/errors/FetchError'
@@ -233,6 +236,7 @@ import TheRatingBox from '~/components/general/TheRatingBox'
 export default {
   layout: 'homepage',
   components: {
+    VClamp,
     TheRatingBox,
     FullDescriptionDialog,
     CourseDataCardGeneral,
@@ -273,8 +277,6 @@ export default {
         { data: { course: this.courseData.id } }
       )
       this.studentCanViewCourse = !courseResp.data.status
-
-      this.canRateTheClass = true
     }
   },
   data() {
@@ -296,7 +298,6 @@ export default {
       studentCanViewCourse: false,
       studentCanApply: false,
       disabledAddCourse: false,
-      canRateTheClass: false,
     }
   },
   computed: {
@@ -341,18 +342,6 @@ export default {
     },
   },
   methods: {
-    rateClass(type_) {
-      // eslint-disable-next-line no-console
-      console.log(type_)
-      switch (type_) {
-        case 1:
-          this.yesThumbCount += 1
-          break
-        case 0:
-          this.noThumbCount += 1
-          break
-      }
-    },
     async addCourse() {
       this.addCourseLoading = true
       try {
@@ -369,6 +358,7 @@ export default {
           this.disabledAddCourse = true
           this.$store.dispatch('snackalert/showSuccessSnackbar', data.message)
         }
+        this.$fetch()
       } catch (e) {
         let msg
         if (e.response) {
@@ -427,7 +417,7 @@ export default {
   },
   head() {
     return {
-      title: `${this.courseTitle}`,
+      title: `${this.courseTitle} Class`,
     }
   },
 }

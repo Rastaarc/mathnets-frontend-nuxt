@@ -102,12 +102,13 @@
                         </v-expansion-panel-content>
                       </v-expansion-panel>
                     </v-expansion-panels>
+                    <div class="mt-4 text-center"></div>
                   </div>
                   <div
                     v-else
                     class="mt-4 font-weight-bold text-md-h5 text-title text-uppercase text-center"
                   >
-                    No Topics for this course yet. Check back later
+                    {{ messages.NO_TOPIC_FOR_CLASS }}
                   </div>
                 </div>
               </div>
@@ -116,7 +117,7 @@
               <div
                 class="text-title text-md-h5 font-weight-bold text-center text-uppercase"
               >
-                Other Courses
+                Other Classes
               </div>
               <div v-if="otherCoursesLoading" class="text-center">
                 <v-progress-circular indeterminate color="primary" />
@@ -328,7 +329,7 @@ export default {
   },
   head() {
     return {
-      title: `${this.topicTitle}`,
+      title: `${this.topicTitle} Class`,
     }
   },
 }

@@ -8,11 +8,11 @@
       >
       <v-card-text>
         <div
-          class="truncate-t"
-          :style="{ height: '30px' }"
+          :style="{ height: '90px' }"
           @click="showFullDescription(topic.description)"
         >
-          {{ topic.description }}
+          <v-clamp autoresize :max-lines="4">{{ topic.description }}</v-clamp>
+          <!--{{ topic.description }}-->
           <!--<TextTruncate>{{ topic.description }}</TextTruncate>-->
         </div>
       </v-card-text>
@@ -47,10 +47,14 @@
 </template>
 
 <script>
+import VClamp from 'vue-clamp'
 import FullDescriptionDialog from '~/components/dialogs/FullDescriptionDialog'
 export default {
   name: 'TopicDataCard',
-  components: { FullDescriptionDialog },
+  components: {
+    FullDescriptionDialog,
+    VClamp,
+  },
   props: {
     topic: {
       type: Object,

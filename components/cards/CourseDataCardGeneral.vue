@@ -16,11 +16,11 @@
       >
       <v-card-text>
         <div
-          class="truncate-t"
-          :style="{ height: '20px' }"
+          :style="{ height: '55px' }"
           @click="showFullDescription(courseDescription)"
         >
-          {{ courseDescription }}
+          <v-clamp autoresize :max-lines="3">{{ courseDescription }}</v-clamp>
+          <!--{{ courseDescription }}-->
           <!-- <TextTruncate>{{ courseDescription }}</TextTruncate> -->
         </div>
       </v-card-text>
@@ -47,10 +47,11 @@
 </template>
 
 <script>
+import VClamp from 'vue-clamp'
 import FullDescriptionDialog from '~/components/dialogs/FullDescriptionDialog'
 export default {
   name: 'CourseDataCardGeneral',
-  components: { FullDescriptionDialog },
+  components: { FullDescriptionDialog, VClamp },
   props: {
     course: {
       type: Object,

@@ -28,12 +28,14 @@ export const CONSTANTS = {
       ADD_PAYMENT: '/student/add/payment',
       UPDATE_PAYMENT: '/student/update/payment',
       ADD_COURSE: '/student/add/class',
+      ADD_REVIEW: '/student/add/review',
       ADD_SUBSCRIPTION: '/student/add/subscription',
       LOAD_PAYMENTS: '/student/load/payments',
       LOAD_COURSES: '/student/load/classes',
       LOAD_SUBSCRIPTIONS: '/student/load/subscriptions',
       CHECK_SUBSCRIPTION_STATUS: '/student/check/subscription/status',
       CHECK_COURSE_STATUS: '/student/check/class/status',
+      CHECK_REVIEW_STATUS: '/student/check/review/status',
     },
     INSTRUCTOR: {
       GET_TOPICS: 'instructor/get/topics',
@@ -50,6 +52,7 @@ export const CONSTANTS = {
       GET_SUBSCRIPTIONS_DATA: 'get/subscriptions/data',
       UPDATE_DP_LINK: 'update/dp/link',
       VALIDATE_PAYMENT: '/validate/payment',
+      LOAD_COMMENTS: '/load/comments',
     },
     AUTH: {
       LOGIN: 'auth/login',
