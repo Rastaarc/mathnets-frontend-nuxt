@@ -102,7 +102,9 @@
                         </v-expansion-panel-content>
                       </v-expansion-panel>
                     </v-expansion-panels>
-                    <div class="mt-4 text-center"></div>
+                    <div class="mt-4 text-center">
+                      <TheRatingBox :course="courseData" />
+                    </div>
                   </div>
                   <div
                     v-else
@@ -152,6 +154,7 @@
 
 <script>
 import _ from 'lodash'
+import TheRatingBox from '~/components/general/TheRatingBox'
 import VideoPlayer from '~/components/video/VideoPlayer'
 import CircularLoader from '~/components/loaders/CircularLoader'
 import FetchError from '~/components/errors/FetchError'
@@ -166,6 +169,7 @@ export default {
     VideoPlayer,
     CircularLoader,
     FetchError,
+    TheRatingBox,
   },
   async fetch() {
     const { data } = await this.$axios.post(
