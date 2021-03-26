@@ -110,6 +110,7 @@
         </div>
         <br />
         <br />
+        <!--{{ ratingReviews }}-->
       </div>
     </div>
   </div>

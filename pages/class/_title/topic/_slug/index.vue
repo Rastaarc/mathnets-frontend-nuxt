@@ -40,11 +40,7 @@
         <div v-if="!isRealYoutubeId" style="max-width: 100%; min-width: 100%">
           <VideoPlayer :player-options="options" />
         </div>
-        <div
-          v-else
-          class="my-8 d-flex mx-auto"
-          :class="{ 'youtube-player-2': $vuetify.breakpoint.mdAndUp }"
-        >
+        <div v-else class="my-8 d-flex mx-auto youtube-player-2">
           <v-spacer />
           <youtube :video-id="youtubeId" />
           <v-spacer />
@@ -263,6 +259,7 @@ export default {
         language: 'en',
         fluid: true,
         responsive: true,
+        techOrder: ['youtube', 'html5'],
         sources: [
           {
             src: this.currentTopic.video_link,
@@ -352,6 +349,13 @@ export default {
   position: relative;
   padding-bottom: 56.25%;
   height: 0;
+}
+.youtube-player-2 iframe {
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
 #youtube-player-2 {
   left: 0;
