@@ -37,13 +37,15 @@
             </v-btn></v-breadcrumbs-item
           >
         </v-breadcrumbs>
-        <div v-if="!isRealYoutubeId" style="max-width: 100%; min-width: 100%">
-          <VideoPlayer :player-options="options" />
-        </div>
-        <div v-else class="my-8 d-flex mx-auto youtube-player-2">
-          <v-spacer />
-          <youtube :video-id="youtubeId" />
-          <v-spacer />
+        <div v-if="!studentClassError">
+          <div v-if="!isRealYoutubeId" style="max-width: 100%; min-width: 100%">
+            <VideoPlayer :player-options="options" />
+          </div>
+          <div v-else class="my-8 d-flex mx-auto youtube-player-2">
+            <v-spacer />
+            <youtube :video-id="youtubeId" />
+            <v-spacer />
+          </div>
         </div>
         <!--<vue-core-video-player :src="options.sources[0].src" />
         <video-embed :src="options.sources[1].src" />-->
@@ -172,6 +174,7 @@ export default {
     TheRatingBox,
   },
   async fetch() {
+    let errorOccurred = false
     const { data } = await this.$axios.post(
       CONSTANTS.ROUTES.GENERAL.GET_COURSE_DATA,
       {
@@ -181,24 +184,25 @@ export default {
       }
     )
     if (data.message) {
+      errorOccurred = true
       this.$store.dispatch('snackalert/showErrorSnackbar', data.message)
-      this.$router.push({ name: 'courses' })
+      await this.$router.push({ name: 'classes' })
     }
-    this.courseData = data.course
-
-    if (!this.$auth.loggedIn && this.courseData.subscription.price > 0) {
-      this.$router.push({ name: 'auth-login' })
+    if (!this.$auth.loggedIn && data.course.subscription.price > 0) {
+      errorOccurred = true
+      await this.$router.push({ name: 'auth-login' })
     } else if (
       this.$auth.loggedIn &&
       this.$auth.user.user_type === CONSTANTS.USER_TYPES.STUDENT &&
-      this.courseData.subscription.pricing > 0
+      data.course.subscription.price > 0
     ) {
       const cResp = await this.$axios.post(
         CONSTANTS.ROUTES.STUDENT.CHECK_COURSE_STATUS,
-        { data: { course: this.courseData.id } }
+        { data: { course: data.course.id } }
       )
       if (cResp.data.status) {
-        this.$store.dispatch(
+        errorOccurred = true
+        await this.$store.dispatch(
           'snackalert/showErrorSnackbar',
           CONSTANTS.MESSAGES.ADD_COURSE_FIRST
         )
@@ -208,30 +212,33 @@ export default {
         })
       }
     }
-
-    const res = await this.$axios.post(
-      CONSTANTS.ROUTES.GENERAL.GET_TOPIC_DATA,
-      {
-        data: {
-          course_id: this.courseData.id,
-          topic_seo_link: this.$route.params.slug,
-        },
+    this.studentClassError = errorOccurred
+    if (!errorOccurred) {
+      this.courseData = data.course
+      const res = await this.$axios.post(
+        CONSTANTS.ROUTES.GENERAL.GET_TOPIC_DATA,
+        {
+          data: {
+            course_id: this.courseData.id,
+            topic_seo_link: this.$route.params.slug,
+          },
+        }
+      )
+      if (res.data.message) {
+        this.$store.dispatch('snackalert/showErrorSnackbar', res.data.message)
+        this.topicAvailable = false
+        await this.$router.push({
+          name: 'class-title',
+          params: { title: this.courseData.seo_link },
+        })
       }
-    )
-    if (res.data.message) {
-      this.$store.dispatch('snackalert/showErrorSnackbar', res.data.message)
-      this.topicAvailable = false
-      await this.$router.push({
-        name: 'class-title',
-        params: { title: this.courseData.seo_link },
-      })
+
+      await this.loadTopics(this.courseData.id)
+      await this.loadOtherCourses(this.courseData.id)
+
+      this.youtubeId = this.$youtube.getIdFromURL(this.currentTopic.video_link)
+      this.isRealYoutubeId = this.youtubeId !== this.currentTopic.video_link
     }
-
-    await this.loadTopics(this.courseData.id)
-    await this.loadOtherCourses(this.courseData.id)
-
-    this.youtubeId = this.$youtube.getIdFromURL(this.currentTopic.video_link)
-    this.isRealYoutubeId = this.youtubeId !== this.currentTopic.video_link
   },
   data() {
     return {
@@ -245,6 +252,7 @@ export default {
       topicAvailable: true,
       youtubeId: null,
       isRealYoutubeId: false,
+      studentClassError: false,
     }
   },
   computed: {
@@ -259,7 +267,7 @@ export default {
         language: 'en',
         fluid: true,
         responsive: true,
-        //techOrder: ['youtube', 'html5'],
+        // techOrder: ['youtube', 'html5'],
         sources: [
           {
             src: this.currentTopic.video_link,
