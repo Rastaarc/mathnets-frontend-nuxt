@@ -40,7 +40,11 @@
         <div v-if="!isRealYoutubeId" style="max-width: 100%; min-width: 100%">
           <VideoPlayer :player-options="options" />
         </div>
-        <div v-else class="my-8 d-flex mx-auto youtube-player-2">
+        <div
+          v-else
+          class="my-8 d-flex mx-auto"
+          :class="{ 'youtube-player-2': $vuetify.breakpoint.mdAndUp }"
+        >
           <v-spacer />
           <youtube :video-id="youtubeId" />
           <v-spacer />
