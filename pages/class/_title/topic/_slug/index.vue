@@ -259,7 +259,7 @@ export default {
         language: 'en',
         fluid: true,
         responsive: true,
-        techOrder: ['youtube', 'html5'],
+        //techOrder: ['youtube', 'html5'],
         sources: [
           {
             src: this.currentTopic.video_link,
