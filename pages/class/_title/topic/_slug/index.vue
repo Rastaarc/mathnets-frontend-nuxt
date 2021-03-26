@@ -140,7 +140,7 @@
                   v-else
                   class="mt-4 font-weight-bold text-md-h5 text-title text-uppercase text-center"
                 >
-                  No other courses yet. Check back later
+                  No other classes yet. Check back later
                 </div>
               </div>
             </v-col>

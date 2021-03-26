@@ -101,7 +101,7 @@ export const CONSTANTS = {
       'Oops! Something went wrong with your request. please try again',
     ADD_COURSE_FIRST: 'Please add the Class to your Classes list first',
     NO_OTHER_CLASS_YET: 'No other courses yet. Check back later',
-    NO_TOPIC_FOR_CLASS: 'No Topics for this course yet. Check back later',
+    NO_TOPIC_FOR_CLASS: 'No Topics for this class yet. Check back later',
     CLASS_LOGIN_REQUIRED:
       'PLEASE SIGNUP/LOGIN FIRST IN ORDER TO ADD THIS CLASS',
     NO_COURSE_DATA: 'No Class Data To Display Right Now',
