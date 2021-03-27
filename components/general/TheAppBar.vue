@@ -150,12 +150,12 @@ export default {
           title: 'Topics',
           to: { name: 'admin-topics' },
           icon: 'mdi-book-open-page-variant-outline',
-        }, */
+        },
         {
           title: 'Past Questions',
           to: { name: 'admin-pq' },
           icon: 'mdi-cast-education',
-        },
+        }, */
         {
           title: 'Instructors',
           to: { name: 'admin-instructors' },

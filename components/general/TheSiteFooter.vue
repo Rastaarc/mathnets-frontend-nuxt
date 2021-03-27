@@ -18,17 +18,23 @@
                 <v-divider></v-divider>
                 <span class="text-center"
                   >&copy; {{ new Date().getFullYear() }},
-                  <v-btn
-                    text
-                    class="mx-n4 text-capitalize"
-                    color="primary"
-                    plain
-                    tile
-                    to="/"
-                    >{{ appName }}</v-btn
+                  <span class="font-weight-bold"
+                    ><nuxtLink
+                      text
+                      class="text-decoration-none text-capitalize"
+                      to="/"
+                      >{{ appName }}</nuxtLink
+                    ></span
                   >
                   All Right Reserved. Developed by
-                  <span class="font-weight-bold">Rastaarc</span>, Designed by
+                  <span
+                    ><a
+                      href="https://www.twitter.com/rastaarcL"
+                      class="text-decoration-none"
+                      target="_blank"
+                      >Rastaarc</a
+                    ></span
+                  >, Designed by
                   <span class="font-weight-bold">Winnpixels</span></span
                 >
               </v-col>

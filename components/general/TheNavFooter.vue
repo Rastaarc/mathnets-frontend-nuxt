@@ -43,15 +43,15 @@ export default {
         { to: { name: 'index' }, name: 'Home' },
         { to: { name: 'auth-signup' }, name: 'Sign Up' },
         { to: { name: 'auth-login' }, name: 'Log In' },
-        { to: { name: 'contact' }, name: 'Contact Us' },
       ],
       interactive: [
         { to: { name: 'classes' }, name: 'Classes' },
-        { to: { name: 'pq' }, name: 'Past Questions' },
+        // { to: { name: 'pq' }, name: 'Past Questions' },
       ],
       company: [
-        { to: { name: 'about' }, name: 'About Us' },
         { to: { name: 'pricing' }, name: 'Pricing' },
+        { to: { name: 'about' }, name: 'About Us' },
+        { to: { name: 'contact' }, name: 'Contact Us' },
         { to: { name: 'terms' }, name: 'Terms & Conditions' },
       ],
     }

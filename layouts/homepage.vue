@@ -127,7 +127,7 @@ export default {
       appName: CONSTANTS.APP_NAME,
       menuItems: [
         { name: 'Classes', to: { name: 'classes' } },
-        { name: 'Past Questions', to: { name: 'pq' } },
+        // { name: 'Past Questions', to: { name: 'pq' } },
         { name: 'Pricing', to: { name: 'pricing' } },
         { name: 'About', to: { name: 'about' } },
       ],
