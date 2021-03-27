@@ -153,12 +153,40 @@
                       <v-expansion-panel-content
                         class="text-caption text-md-h6"
                       >
+                        <div
+                          v-if="$vuetify.breakpoint.mdAndUp"
+                          class="d-flex text-body-2"
+                        >
+                          By:
+                          <nuxtLink
+                            class="text-capitalize text-decoration-none px-1"
+                            :to="{
+                              name: 'profile-user',
+                              params: { user: topic.instructor.username },
+                            }"
+                            >{{ topic.instructor.first_name }},{{
+                              topic.instructor.last_name
+                            }}
+                          </nuxtLink>
+                          |{{ formattedDate(topic.created_on) }}
+                        </div>
+                        <div v-else class="text-caption">
+                          By:
+                          <nuxtLink
+                            class="text-capitalize text-decoration-none px-1"
+                            :to="{
+                              name: 'profile-user',
+                              params: { user: topic.instructor.username },
+                            }"
+                            >{{ topic.instructor.first_name }},{{
+                              topic.instructor.last_name
+                            }} </nuxtLink
+                          >| {{ formattedDate(topic.created_on) }}
+                        </div>
                         <div class="d-flex">
-                          <v-spacer /><v-btn
+                          <v-spacer /><nuxtLink
                             v-if="canViewCourse"
-                            text
-                            plain
-                            color="primary"
+                            class="text-decoration-none"
                             :to="{
                               name: 'class-title-topic-slug',
                               params: {
@@ -166,7 +194,7 @@
                                 title: topic.course.seo_link,
                               },
                             }"
-                            >View Topic</v-btn
+                            >View Topic</nuxtLink
                           >
                         </div>
                         <div>{{ topic.description }}</div>
@@ -225,6 +253,7 @@
 
 <script>
 import _ from 'lodash'
+import format from 'date-fns/format'
 import VClamp from 'vue-clamp'
 import { CONSTANTS } from '~/assets/javascript/constants'
 import CircularLoader from '~/components/loaders/CircularLoader'
@@ -342,6 +371,10 @@ export default {
     },
   },
   methods: {
+    formattedDate(c) {
+      return format(new Date(c), 'dd MMM YYY HH:mm:ss')
+    },
+
     async addCourse() {
       this.addCourseLoading = true
       try {

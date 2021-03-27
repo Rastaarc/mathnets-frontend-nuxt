@@ -58,7 +58,7 @@
               <div
                 class="text-title text-md-h5 font-weight-bold text-uppercase"
               >
-                Course Topics
+                Class Topics
               </div>
               <div>
                 <div v-if="topicsLoading">
@@ -70,7 +70,7 @@
                       <v-expansion-panel v-for="(topic, i) in topics" :key="i">
                         <v-expansion-panel-header
                           v-if="topic.seo_link === $route.params.slug"
-                          class="font-weight-bold primary--text"
+                          class="text-title font-weight-bold primary--text"
                           >{{ topic.title }}
                           <template #actions>
                             <v-icon color="primary"> $expand </v-icon>
@@ -84,12 +84,40 @@
                         <v-expansion-panel-content
                           class="text-caption text-md-h6"
                         >
+                          <div
+                            v-if="$vuetify.breakpoint.mdAndUp"
+                            class="d-flex text-body-2"
+                          >
+                            By:
+                            <nuxtLink
+                              class="text-capitalize text-decoration-none px-1"
+                              :to="{
+                                name: 'profile-user',
+                                params: { user: topic.instructor.username },
+                              }"
+                              >{{ topic.instructor.first_name }},{{
+                                topic.instructor.last_name
+                              }}
+                            </nuxtLink>
+                            |{{ formattedDate(topic.created_on) }}
+                          </div>
+                          <div v-else class="text-caption">
+                            By:
+                            <nuxtLink
+                              class="text-capitalize text-decoration-none px-1"
+                              :to="{
+                                name: 'profile-user',
+                                params: { user: topic.instructor.username },
+                              }"
+                              >{{ topic.instructor.first_name }},{{
+                                topic.instructor.last_name
+                              }} </nuxtLink
+                            >| {{ formattedDate(topic.created_on) }}
+                          </div>
                           <div class="d-flex">
-                            <v-spacer /><v-btn
+                            <v-spacer /><nuxtLink
                               v-if="topic.seo_link !== $route.params.slug"
-                              text
-                              plain
-                              color="primary"
+                              class="text-decoration-none"
                               :to="{
                                 name: 'class-title-topic-slug',
                                 params: {
@@ -97,7 +125,7 @@
                                   title: topic.course.seo_link,
                                 },
                               }"
-                              >View Topic</v-btn
+                              >View Topic</nuxtLink
                             >
                           </div>
                           <div>{{ topic.description }}</div>
@@ -156,6 +184,7 @@
 
 <script>
 import _ from 'lodash'
+import format from 'date-fns/format'
 import TheRatingBox from '~/components/general/TheRatingBox'
 import VideoPlayer from '~/components/video/VideoPlayer'
 import CircularLoader from '~/components/loaders/CircularLoader'
@@ -299,6 +328,9 @@ export default {
   },
   mounted() {},
   methods: {
+    formattedDate(c) {
+      return format(new Date(c), 'dd MMM YYY')
+    },
     async loadTopics(courseId) {
       try {
         const { data } = await this.$axios.post(
