@@ -372,7 +372,7 @@ export default {
   },
   methods: {
     formattedDate(c) {
-      return format(new Date(c), 'dd MMM YYY HH:mm:ss')
+      return format(new Date(c), 'dd MMM YYY')
     },
 
     async addCourse() {
