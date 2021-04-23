@@ -6,7 +6,7 @@
       About Us
     </div>
     <div class="text-center mt-5 mt-md-7 mb-5">
-      <div class="font-weight-bold text-title text-md-h5">How we started</div>
+      <!--<div class="font-weight-bold text-title text-md-h5">How we started</div>-->
       <div class="text-caption text-md-title">
         Mathsnet platform is a platform that teaches all the curriculum  Mathematics 
         at primary level, Secondary level and A level Mathematics. 
