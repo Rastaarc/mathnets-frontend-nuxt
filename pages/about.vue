@@ -8,15 +8,16 @@
     <div class="text-center mt-5 mt-md-7 mb-5">
       <!--<div class="font-weight-bold text-title text-md-h5">How we started</div>-->
       <div class="text-caption text-md-title">
-        Mathsnet platform is a platform that teaches all the curriculum  Mathematics 
-        at primary level, Secondary level and A level Mathematics. 
-        <br/><br/>
-        All the tutors are professionals in Mathematics with a minimum qualification 
-        of Master of Science in Mathematics in different areas of Mathematics. 
-        <br/><br/><br/>
-        Solutions to past questions such as West Africa Examination ( WAEC), GCE, 
-        NECO and JAMB are solved.
-        <br/><br/>
+        Mathsnet platform is a platform that teaches all the curriculum
+        Mathematics at primary level, Secondary level and A level Mathematics.
+        <br /><br />
+        All the tutors are professionals in Mathematics with a minimum
+        qualification of Master of Science in Mathematics in different areas of
+        Mathematics.
+        <br /><br /><br />
+        Solutions to past questions such as West Africa Examination ( WAEC),
+        GCE, NECO and JAMB are solved.
+        <br /><br />
         There are free video for students to watch.
       </div>
     </div>
@@ -47,17 +48,16 @@
               PhD
             </div>
             <div class="text-caption text-md-title text-justify">
-              <b>Alamu Awoniran Funmilola</b> is a PhD Student of Applied Mathematics 
-              at the University Ilorin. 
-              <br/><br/>
-              She has her first degree in Mathematics at Olabisi Onabanjo University 
-              Ago- Iwoye, Ogun State. 
-              <br/><br/>
-              She has a Master of Science in Applied Mathematics at the University 
-              of Port Harcourt, Rivers State. 
-              <br/><br/>
-              She was once a Mathematics lecturer at Uptonville Oil and Gas Institute 
-              GRA, Port Harcourt. She has three publications.
+              <b>Alamu Awoniran Funmilola</b> is a PhD Student of Applied
+              Mathematics at the University Ilorin. <br /><br />
+              She has her first degree in Mathematics at Olabisi Onabanjo
+              University Ago- Iwoye, Ogun State.
+              <br /><br />
+              She has a Master of Science in Applied Mathematics at the
+              University of Port Harcourt, Rivers State.
+              <br /><br />
+              She was once a Mathematics lecturer at Uptonville Oil and Gas
+              Institute GRA, Port Harcourt. She has three publications.
             </div>
           </v-card-text>
         </v-card>
