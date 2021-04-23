@@ -10,7 +10,8 @@ export default {
         hid: 'description',
         name: 'description',
         content:
-          'Online maths schools, Learn Maths swiftly with best techniques',
+          'Mathsnet platform is a platform that teaches all the curriculum\n' +
+          'Mathematics at primary level, Secondary level and A level Mathematics. Learn Maths swiftly with best techniques',
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
