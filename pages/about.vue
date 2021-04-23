@@ -8,18 +8,16 @@
     <div class="text-center mt-5 mt-md-7 mb-5">
       <div class="font-weight-bold text-title text-md-h5">How we started</div>
       <div class="text-caption text-md-title">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt
-        ut urna in faucibus. Quisque eget aliquet metus. Nullam dignissim, nibh
-        vitae ultricies ullamcorper, nibh metus volutpat erat, mattis bibendum
-        ipsum turpis quis nibh. Sed rutrum, lorem quis vehicula viverra, ante
-        dui varius erat, eu cursus purus risus non nulla. Nam at volutpat
-        libero. Maecenas non tincidunt ante, vel iaculis odio. Suspendisse orci
-        risus, iaculis in ex quis, interdum commodo tellus. Phasellus venenatis
-        dapibus neque, ac suscipit odio dapibus in. Praesent dapibus eu nibh vel
-        gravida. Duis non arcu vestibulum, ornare elit vitae, porta quam. Fusce
-        non viverra diam, at cursus sem. Proin congue dui sed nulla placerat
-        facilisis. Vivamus et arcu euismod mauris accumsan tincidunt. Vestibulum
-        vulputate feugiat purus sit amet congue.
+        Maths net platform is a platform that teaches all the curriculum  Mathematics 
+        at primary level, Secondary level and A level Mathematics. 
+        <br/>
+        All the tutors are professionals in Mathematics with a minimum qualification 
+        of Master of Science in Mathematics in different areas of Mathematics. 
+        <br/>
+        Solutions to past questions such as West Africa Examination ( WAEC), GCE, 
+        NECO and JAMB are solved.
+        <br/>
+        There are free video for students to watch.
       </div>
     </div>
     <div
@@ -31,7 +29,7 @@
       <v-col cols="12" md="6">
         <v-card>
           <v-img
-            src="/images/thumbnail.jpg"
+            src="/images/tutors/alamu_funmi.jpg"
             lazy-src="/images/thumbnail.jpg"
             :height="creatorImageHeight"
           >
@@ -49,12 +47,17 @@
               PhD
             </div>
             <div class="text-caption text-md-title">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-              tincidunt ut urna in faucibus. Quisque eget aliquet metus. Nullam
-              dignissim, nibh vitae ultricies ullamcorper, nibh metus volutpat
-              erat, mattis bibendum ipsum turpis quis nibh. Sed rutrum, lorem
-              quis vehicula viverra, ante dui varius erat, eu cursus purus risus
-              non nulla. Nam at volutpat
+              <b>Alamu Awoniran Funmilola</b> is a PhD Student of Applied Mathematics 
+              at the University Ilorin. 
+              <br/>
+              She has her first degree in Mathematics at Olabisi Onabanjo University 
+              Ago- Iwoye, Ogun State. 
+              <br/>
+              She has a Master of Science in Applied Mathematics at the University 
+              of Port Harcourt, Rivers State. 
+              <br/>
+              She was once a Mathematics lecturer at Uptonville Oil and Gas Institute 
+              GRA, Port Harcourt. She has three publications.
             </div>
           </v-card-text>
         </v-card>
