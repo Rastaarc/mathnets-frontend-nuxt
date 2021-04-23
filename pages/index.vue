@@ -119,7 +119,8 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: `${CONSTANTS.APP_NAME} Homepage, Online maths schools`,
+          content: `${CONSTANTS.APP_NAME} Homepage, Online maths learning portal. Mathsnet platform is a platform that teaches all the curriculum
+        Mathematics at primary level, Secondary level and A level Mathematics.`,
         },
       ],
     }
