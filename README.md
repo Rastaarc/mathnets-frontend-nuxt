@@ -1,5 +1,5 @@
 # mathnets
-
+The frontend to the Mathnets Website using NuxtJs(Vue) framework. Developed with love by Rastaarc
 ## Build Setup
 
 ```bash
