@@ -89,29 +89,29 @@
                             class="d-flex text-body-2"
                           >
                             By:
-                            <nuxtLink
+                            <v-btn
+                              plain
+                              text
+                              color="primary"
                               class="text-capitalize text-decoration-none px-1"
-                              :to="{
-                                name: 'profile-user',
-                                params: { user: topic.instructor.username },
-                              }"
+                              @click="updateProfileDialog(topic.instructor)"
                               >{{ topic.instructor.first_name }},{{
                                 topic.instructor.last_name
                               }}
-                            </nuxtLink>
+                            </v-btn>
                             |{{ formattedDate(topic.created_on) }}
                           </div>
                           <div v-else class="text-caption">
                             By:
-                            <nuxtLink
+                            <v-btn
+                              plain
+                              text
+                              color="primary"
                               class="text-capitalize text-decoration-none px-1"
-                              :to="{
-                                name: 'profile-user',
-                                params: { user: topic.instructor.username },
-                              }"
+                              @click="updateProfileDialog(topic.instructor)"
                               >{{ topic.instructor.first_name }},{{
                                 topic.instructor.last_name
-                              }} </nuxtLink
+                              }} </v-btn
                             >| {{ formattedDate(topic.created_on) }}
                           </div>
                           <div class="d-flex">
@@ -147,7 +147,7 @@
             </v-col>
             <v-col cols="12" md="4">
               <div
-                class="text-title text-md-h5 font-weight-bold text-center text-uppercase"
+                class="primary--text text-title text-md-h5 font-weight-bold text-center text-uppercase"
               >
                 Other Classes
               </div>
@@ -179,6 +179,11 @@
         <GeneralError msg="Invalid Topic Request" :show-reload="false" />
       </div>
     </div>
+    <profile-dialog
+      :open-dialog="showProfileDialog"
+      :profile-data="profileDialogData"
+      @closeDialog="showProfileDialog = false"
+    />
   </div>
 </template>
 
@@ -191,7 +196,7 @@ import CircularLoader from '~/components/loaders/CircularLoader'
 import FetchError from '~/components/errors/FetchError'
 import { CONSTANTS } from '~/assets/javascript/constants'
 import GeneralError from '~/components/errors/GeneralError'
-
+import ProfileDialog from '~/components/dialogs/ProfileDialog'
 export default {
   layout: 'homepage',
   // middleware: ['authenticate'],
@@ -201,6 +206,7 @@ export default {
     CircularLoader,
     FetchError,
     TheRatingBox,
+    ProfileDialog,
   },
   async fetch() {
     let errorOccurred = false
@@ -271,6 +277,8 @@ export default {
   },
   data() {
     return {
+      showProfileDialog: false,
+      profileDialogData: null,
       courseData: {},
       messages: CONSTANTS.MESSAGES,
       topics: [],
@@ -328,6 +336,10 @@ export default {
   },
   mounted() {},
   methods: {
+    updateProfileDialog(instructor) {
+      this.profileDialogData = instructor
+      this.showProfileDialog = true
+    },
     formattedDate(c) {
       return format(new Date(c), 'dd MMM YYY')
     },

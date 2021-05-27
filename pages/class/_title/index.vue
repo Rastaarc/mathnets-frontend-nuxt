@@ -158,29 +158,29 @@
                           class="d-flex text-body-2"
                         >
                           By:
-                          <nuxtLink
+                          <v-btn
+                            plain
+                            text
+                            color="primary"
                             class="text-capitalize text-decoration-none px-1"
-                            :to="{
-                              name: 'profile-user',
-                              params: { user: topic.instructor.username },
-                            }"
+                            @click="updateProfileDialog(topic.instructor)"
                             >{{ topic.instructor.first_name }},{{
                               topic.instructor.last_name
                             }}
-                          </nuxtLink>
+                          </v-btn>
                           |{{ formattedDate(topic.created_on) }}
                         </div>
                         <div v-else class="text-caption">
                           By:
-                          <nuxtLink
+                          <v-btn
+                            plain
+                            text
+                            color="primary"
                             class="text-capitalize text-decoration-none px-1"
-                            :to="{
-                              name: 'profile-user',
-                              params: { user: topic.instructor.username },
-                            }"
+                            @click="updateProfileDialog(topic.instructor)"
                             >{{ topic.instructor.first_name }},{{
                               topic.instructor.last_name
-                            }} </nuxtLink
+                            }} </v-btn
                           >| {{ formattedDate(topic.created_on) }}
                         </div>
                         <div class="d-flex">
@@ -216,7 +216,7 @@
           </v-col>
           <v-col cols="12" md="5">
             <div
-              class="text-title text-md-h5 font-weight-bold text-center text-uppercase"
+              class="primary--text text-title text-md-h5 font-weight-bold text-center text-uppercase"
             >
               Other Classes
             </div>
@@ -248,6 +248,11 @@
       :text="fullDescription"
       @closeDialog="openFullDescription = false"
     />
+    <profile-dialog
+      :open-dialog="showProfileDialog"
+      :profile-data="profileDialogData"
+      @closeDialog="showProfileDialog = false"
+    />
   </div>
 </template>
 
@@ -261,6 +266,7 @@ import FetchError from '~/components/errors/FetchError'
 import CourseDataCardGeneral from '~/components/cards/CourseDataCardGeneral'
 import FullDescriptionDialog from '~/components/dialogs/FullDescriptionDialog'
 import TheRatingBox from '~/components/general/TheRatingBox'
+import ProfileDialog from '~/components/dialogs/ProfileDialog'
 
 export default {
   layout: 'homepage',
@@ -271,6 +277,7 @@ export default {
     CourseDataCardGeneral,
     CircularLoader,
     FetchError,
+    ProfileDialog,
   },
   async fetch() {
     const { data } = await this.$axios.post(
@@ -310,6 +317,8 @@ export default {
   },
   data() {
     return {
+      showProfileDialog: false,
+      profileDialogData: null,
       rating: 1,
       noThumbColor: 'secondary',
       noThumbCount: 0,
@@ -371,6 +380,10 @@ export default {
     },
   },
   methods: {
+    updateProfileDialog(instructor) {
+      this.profileDialogData = instructor
+      this.showProfileDialog = true
+    },
     formattedDate(c) {
       return format(new Date(c), 'dd MMM YYY')
     },
