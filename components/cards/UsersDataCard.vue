@@ -21,7 +21,7 @@
                 >{{ user.first_name }}, {{ user.last_name }}</span
               >
             </div>
-            <div v-else>{{ user.username }}</div>
+            <div class="text-body-1 font-italic">{{ user.username }}</div>
           </div>
         </div>
         <v-divider />
