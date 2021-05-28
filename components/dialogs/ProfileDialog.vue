@@ -84,10 +84,10 @@ export default {
     },
     avatarSize() {
       return this.$vuetify.breakpoint.xsOnly
-        ? '100'
+        ? '170'
         : this.$vuetify.breakpoint.smOnly
-        ? '150'
-        : '220'
+        ? '190'
+        : '240'
     },
     userBio() {
       return this.profileData !== null
