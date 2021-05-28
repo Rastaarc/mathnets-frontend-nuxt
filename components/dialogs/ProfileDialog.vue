@@ -73,10 +73,14 @@ export default {
       return this.$vuetify.breakpoint.smAndDown ? '50px' : '100px'
     },
     profileDP() {
-      return this.profileData.dp_link ? this.profileData.dp_link : ''
+      return this.profileData !== null
+        ? this.profileData.dp_link
+          ? this.profileData.dp_link
+          : ''
+        : ''
     },
     dpAvailable() {
-      return !!this.profileDp
+      return this.profileData !== null && this.profileData.dp_link
     },
     avatarSize() {
       return this.$vuetify.breakpoint.xsOnly
